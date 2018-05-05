@@ -2,7 +2,9 @@
 title: "732A91 Lab 1"
 author: "Fanny Karelius (fanka300), Milda Poceviciute (milpo192)"
 date: "11 april 2018"
-output: pdf_document
+output:
+  html_document: default
+  pdf_document: default
 ---
 
 #Question 1: Bernoulli... again
@@ -90,7 +92,7 @@ mat <- matrix(c(s_mean, inv_mean, s_sd, inv_sd), ncol=2)
 colnames(mat)<-c("Mean", "Sd")
 rownames(mat)<-c("Simulated", "Theoretical")
 mat
-hist(sim_sigma2, xlab="sigma^2", main="Histogram of sigma^2", freq = FALSE)
+hist(sigma2, xlab="sigma^2", main="Histogram of sigma^2", freq = FALSE)
 ```
 
 The mean and standard deviation for the simulated values are very close to the theoretical values. 
@@ -153,7 +155,7 @@ mu2 <- 2.39
 lambda <- 1
 
 posterior <- function(k){
-  result <- lambda*exp(k*sum(cos(z-mu2))-lambda*sum(z))/(2*pi*besselI(k,0))
+  result <- lambda*exp(k*sum(cos(z-mu2))-lambda*k)/(2*pi*besselI(k,0))
   return(result)
 }
 
